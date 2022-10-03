@@ -2005,6 +2005,12 @@ vnr_window_key_press (GtkWidget *widget, GdkEventKey *event)
 
     switch(event->keyval){
         case GDK_KEY_Left:
+            if (event->state & GDK_CONTROL_MASK)
+            {
+                vnr_window_cmd_rotate_ccw(NULL, window);
+                result = TRUE;
+                break;
+            } 
             if (event->state & GDK_MOD1_MASK)
             {
                 vnr_window_cmd_prev (NULL, window);
@@ -2024,6 +2030,12 @@ vnr_window_key_press (GtkWidget *widget, GdkEventKey *event)
             result = TRUE;
             break;
         case GDK_KEY_Right:
+            if (event->state & GDK_CONTROL_MASK)
+            {
+                vnr_window_cmd_rotate_cw(NULL, window);
+                result = TRUE;
+                break;
+            } 
             if (event->state & GDK_MOD1_MASK)
             {
                 vnr_window_cmd_next (NULL, window);
